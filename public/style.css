@@ -2,3 +2,7 @@ h1 {
   font-weight: lighter;
   font-style: italic;
 }
+
+a {
+  color: #000;
+}
