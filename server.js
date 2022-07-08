@@ -19,10 +19,10 @@ const app = express();
 app.engine('hbs', hbs({ extname: 'hbs', layoutsDir: './views/layouts', defaultLayout: 'main' }));
 app.set('view engine', '.hbs');
 
-app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -36,10 +36,10 @@ app.get('/contact', (req, res) => {
   res.render('contact');
 });
 
-app.post('/contact/send-message', upload.single('upload_file'), (req, res, cb) => {
+app.post('/contact/send-message', upload.single('upload_file'), (req, res) => {
 
   const { author, sender, title, message } = req.body;
-  const { originalname, filename } = req.file;
+  const { originalname, filename, path } = req.file;
   if(author && sender && title && message && originalname ) {
     res.render('contact', { isSent: true, originalname: originalname , filename: filename});
   }

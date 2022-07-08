@@ -100,6 +100,11 @@ button {
   animation-duration: 1s;
 }
 
+.sentImage { 
+  max-width: 100%;
+  object-fit: contain;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
